@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-This is ...[A brief introduction]
+This is my blog.
