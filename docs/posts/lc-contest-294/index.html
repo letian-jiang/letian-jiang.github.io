@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>LeetCode Contest #294 | Letian&#39;s Blog</title>
+<meta name="keywords" content="LeetCode">
+<meta name="description" content="整理LeetCode第294次周赛的题目 6077. 巫师的总力量和">
+<meta name="author" content="Letian Jiang">
+<link rel="canonical" href="https://letian-jiang.github.io/posts/lc-contest-294/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://letian-jiang.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://letian-jiang.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://letian-jiang.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://letian-jiang.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://letian-jiang.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+<meta property="og:title" content="LeetCode Contest #294" />
+<meta property="og:description" content="整理LeetCode第294次周赛的题目 6077. 巫师的总力量和" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://letian-jiang.github.io/posts/lc-contest-294/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-23T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-05-23T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LeetCode Contest #294"/>
+<meta name="twitter:description" content="整理LeetCode第294次周赛的题目 6077. 巫师的总力量和"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://letian-jiang.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "LeetCode Contest #294",
+      "item": "https://letian-jiang.github.io/posts/lc-contest-294/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LeetCode Contest #294",
+  "name": "LeetCode Contest #294",
+  "description": "整理LeetCode第294次周赛的题目 6077. 巫师的总力量和",
+  "keywords": [
+    "LeetCode"
+  ],
+  "articleBody": "整理LeetCode第294次周赛的题目 6077. 巫师的总力量和\n思路是使用单调栈来计算每个元素的作为最小值的区间范围，然后根据前缀和计算每个元素对于答案的贡献，本题的特别之处在于要使用二阶前缀和。\n 一次遍历计算每个元素作为最小值的区间  int n = nums.size(); vectorint left(n, - 1), right(n, n); stackint st; for (int i = 0; i  n; i++) {  while (!st.empty() \u0026\u0026 nums[st.top()] = nums[i]) {  int j = st.top();  st.pop();  right[j] = i;  }  if (!st.empty()) {  left[i] = st.top();  }  st.push(i); }  for (int i = 0; i  n; i++) { \tcout  left[i] + 1  ' '  right[i] - 1; } 计算二阶前缀和  每个元素 nums[i] 作为最小值的区间 [l, r] 内的所有子数组之和，可以用求和公式表达 $$\\sum_{x=l}^i \\sum_{y=i}^r sum(nums[x…y])$$\n对这个公式进行推导 $$ \\begin{aligned} \u0026 \\sum_{x=l}^i \\sum_{y=i}^r sum(nums[x…y]) \\\\\\ = \u0026 \\sum_{x=l}^i \\sum_{y=i}^r psum[y] - psum[x-1] \\\\\\ = \u0026 (i - l + 1) \\sum_{y=i}^r psum[y] - (r - i + 1) \\sum_{x=l}^i psum[x - 1] \\\\\\ = \u0026 (i - l + 1) \\sum_{y=i}^r psum[y] - (r - i + 1) \\sum_{x=l-1}^{i-1} psum[x] \\\\\\ = \u0026 (i - l + 1) (ppsum[r] - ppsum[i-1]) - (r - i + 1) (ppsum[i - 1] - ppsum[l - 2]) \\end{aligned} $$ 其中psum为nums的前缀和，ppsum为psum的前缀和\nint mod = 1e9 + 7; vectorint psum = strength; for (int i = 1; i  n; i++) {  psum[i] = (psum[i] + psum[i - 1]) % mod; }  vectorint ppsum = psum; for (int i = 1; i  n; i++) {  ppsum[i] = (ppsum[i] + ppsum[i - 1]) % mod; } 另外通过前缀和计算区间和时，可以使用匿名函数来屏蔽关于下标越界的细节\nauto f = [\u0026](int l, int r) {  if (r  0) return 0;  if (l - 1  0) return ppsum[r];  return (ppsum[r] - ppsum[l - 1] + mod) % mod; }; 最后对每个元素的贡献求和\nint ans = 0; for (int i = 0; i  n; i++) {  int l = left[i] + 1;  int r = right[i] - 1;  int sleft = (long long)(i - l + 1) * f(i, r) % mod;  int sright = (long long)(r - i + 1) * f(l - 1, i - 1) % mod;  long long cur = (sleft - sright + mod) % mod;  ans = (ans + cur * strength[i]) % mod; } return ans; 类似的题目有：   907. 子数组的最小值之和 1856. 子数组最小乘积的最大值  ",
+  "wordCount" : "340",
+  "inLanguage": "en",
+  "datePublished": "2022-05-23T00:00:00Z",
+  "dateModified": "2022-05-23T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Letian Jiang"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://letian-jiang.github.io/posts/lc-contest-294/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Letian's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://letian-jiang.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://letian-jiang.github.io/" accesskey="h" title="Letian&#39;s Blog (Alt + H)">Letian&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      LeetCode Contest #294
+    </h1>
+    <div class="post-meta"><span title='2022-05-23 00:00:00 +0000 UTC'>May 23, 2022</span>&nbsp;·&nbsp;Letian Jiang
+
+</div>
+  </header> 
+  <div class="post-content"><p>整理LeetCode第294次周赛的题目 <a href="https://leetcode.cn/problems/sum-of-total-strength-of-wizards/">6077. 巫师的总力量和</a></p>
+<p>思路是使用单调栈来计算每个元素的作为最小值的区间范围，然后根据前缀和计算每个元素对于答案的贡献，本题的特别之处在于要使用二阶前缀和。</p>
+<ol>
+<li>一次遍历计算每个元素作为最小值的区间</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> nums.size();
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> left(n, <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>), right(n, n);
+</span></span><span style="display:flex;"><span>stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> st;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>st.empty() <span style="color:#f92672">&amp;&amp;</span> nums[st.top()] <span style="color:#f92672">&gt;=</span> nums[i]) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> st.top();
+</span></span><span style="display:flex;"><span>        st.pop();
+</span></span><span style="display:flex;"><span>        right[j] <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>st.empty()) {
+</span></span><span style="display:flex;"><span>        left[i] <span style="color:#f92672">=</span> st.top();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    st.push(i);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> left[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">&lt;&lt;</span> right[i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>计算二阶前缀和</li>
+</ol>
+<p>每个元素 nums[i] 作为最小值的区间 [l, r] 内的所有子数组之和，可以用求和公式表达
+$$\sum_{x=l}^i \sum_{y=i}^r sum(nums[x&hellip;y])$$</p>
+<p>对这个公式进行推导
+$$
+\begin{aligned}
+&amp; \sum_{x=l}^i \sum_{y=i}^r sum(nums[x&hellip;y]) \\\
+= &amp; \sum_{x=l}^i \sum_{y=i}^r psum[y] - psum[x-1] \\\
+= &amp; (i - l + 1) \sum_{y=i}^r psum[y] - (r - i + 1) \sum_{x=l}^i psum[x - 1] \\\
+= &amp; (i - l + 1) \sum_{y=i}^r psum[y] - (r - i + 1) \sum_{x=l-1}^{i-1} psum[x] \\\
+= &amp; (i - l + 1) (ppsum[r] - ppsum[i-1]) - (r - i + 1) (ppsum[i - 1] - ppsum[l - 2])
+\end{aligned}
+$$
+其中psum为nums的前缀和，ppsum为psum的前缀和</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e9</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> psum <span style="color:#f92672">=</span> strength;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    psum[i] <span style="color:#f92672">=</span> (psum[i] <span style="color:#f92672">+</span> psum[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> ppsum <span style="color:#f92672">=</span> psum;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    ppsum[i] <span style="color:#f92672">=</span> (ppsum[i] <span style="color:#f92672">+</span> ppsum[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>另外通过前缀和计算区间和时，可以使用匿名函数来屏蔽关于下标越界的细节</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> f <span style="color:#f92672">=</span> [<span style="color:#f92672">&amp;</span>](<span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (r <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> ppsum[r];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (ppsum[r] <span style="color:#f92672">-</span> ppsum[l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>最后对每个元素的贡献求和</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> left[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> right[i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> sleft <span style="color:#f92672">=</span> (<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span>)(i <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> f(i, r) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> sright <span style="color:#f92672">=</span> (<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span>)(r <span style="color:#f92672">-</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> f(l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> cur <span style="color:#f92672">=</span> (sleft <span style="color:#f92672">-</span> sright <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod; 
+</span></span><span style="display:flex;"><span>    ans <span style="color:#f92672">=</span> (ans <span style="color:#f92672">+</span> cur <span style="color:#f92672">*</span> strength[i]) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> ans;
+</span></span></code></pre></div><ol start="3">
+<li>类似的题目有：</li>
+</ol>
+<ul>
+<li><a href="https://leetcode.cn/problems/sum-of-subarray-minimums/">907. 子数组的最小值之和</a></li>
+<li><a href="https://leetcode.cn/problems/maximum-subarray-min-product/">1856. 子数组最小乘积的最大值</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://letian-jiang.github.io/tags/leetcode/">LeetCode</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://letian-jiang.github.io/">Letian&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
