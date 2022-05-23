@@ -1,0 +1,4 @@
+baseURL = "https://letian-jiang.github.io/"
+languageCode = "en-us"
+title = "Letian's Blog"
+theme = "PaperMod"
